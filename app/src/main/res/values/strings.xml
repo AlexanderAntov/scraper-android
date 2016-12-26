@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Scraper</string>
+    <string name="action_all">All</string>
+    <string name="action_news">News</string>
+    <string name="action_weather">Weather</string>
+    <string name="action_misc">Misc</string>
+    <string name="action_settings">Settings</string>
+</resources>

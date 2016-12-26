@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="antov.scraper.MainActivity">
+    <item
+        android:id="@+id/action_all"
+        android:orderInCategory="100"
+        android:title="@string/action_all"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_news"
+        android:orderInCategory="101"
+        android:title="@string/action_news"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_weather"
+        android:orderInCategory="102"
+        android:title="@string/action_weather"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_misc"
+        android:orderInCategory="103"
+        android:title="@string/action_misc"
+        app:showAsAction="never" />
+</menu>
