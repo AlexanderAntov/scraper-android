@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import antov.scraper.Models.NewsDataObject;
 import antov.scraper.OnDataSendToActivity;
 
-public class NewsProviderTask extends AsyncTask<Void, Void, ArrayList<NewsDataObject>> {
+public class NewsProviderTask extends AsyncTask<String, Void, ArrayList<NewsDataObject>> {
     private OnDataSendToActivity mDataSendToActivity;
 
     public NewsProviderTask(Activity activity) {
@@ -21,14 +21,12 @@ public class NewsProviderTask extends AsyncTask<Void, Void, ArrayList<NewsDataOb
     }
 
     @Override
-    protected ArrayList<NewsDataObject> doInBackground(Void... voids) {
+    protected ArrayList<NewsDataObject> doInBackground(String... url) {
         HttpProvider mHttpProvider = new HttpProvider();
         ArrayList<NewsDataObject> results = new ArrayList<NewsDataObject>();
         String newsResponse = null;
         try {
-            newsResponse = mHttpProvider.performGetRequest(
-                    "https://scraper-api.herokuapp.com/news"
-            );
+            newsResponse = mHttpProvider.performGetRequest(url[0]);
             JSONArray JsonNewsResults = new JSONArray(newsResponse);
             for (int i = 0; i < JsonNewsResults.length(); i++) {
                 JSONObject jsonObject = JsonNewsResults.getJSONObject(i);

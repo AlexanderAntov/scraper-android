@@ -3,11 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="antov.scraper.MainActivity">
     <item
-        android:id="@+id/action_all"
-        android:orderInCategory="100"
-        android:title="@string/action_all"
-        app:showAsAction="never" />
-    <item
         android:id="@+id/action_news"
         android:orderInCategory="101"
         android:title="@string/action_news"

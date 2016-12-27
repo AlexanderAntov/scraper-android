@@ -19,6 +19,9 @@ import antov.scraper.Models.NewsDataObject;
 import antov.scraper.Services.NewsProviderTask;
 
 public class MainActivity extends AppCompatActivity implements OnDataSendToActivity {
+    private final String mRestAppUrl = "https://scraper-api.herokuapp.com/";
+    private final String mRestAppNewsSuffix = "news";
+    private final String mRestAppWeatherSuffix = "weather";
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -38,14 +41,10 @@ public class MainActivity extends AppCompatActivity implements OnDataSendToActiv
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new RecyclerViewAdapter(new ArrayList<NewsDataObject>());
         mRecyclerView.setAdapter(mAdapter);
-
         mProgressDialog = new ProgressDialog(this);
-        mProgressDialog.setTitle("Loading");
-        mProgressDialog.setMessage("Please wait while we scrape the net");
-        mProgressDialog.setCancelable(false);
-        mProgressDialog.show();
+        showLoader();
 
-        new NewsProviderTask(this).execute();
+        new NewsProviderTask(this).execute(mRestAppUrl + mRestAppNewsSuffix);
     }
 
     @Override
@@ -71,6 +70,13 @@ public class MainActivity extends AppCompatActivity implements OnDataSendToActiv
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        if (id == R.id.action_news) {
+            new NewsProviderTask(this).execute(mRestAppUrl + mRestAppNewsSuffix);
+            showLoader();
+        } else if (id == R.id.action_weather) {
+            new NewsProviderTask(this).execute(mRestAppUrl + mRestAppWeatherSuffix);
+            showLoader();
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -86,5 +92,12 @@ public class MainActivity extends AppCompatActivity implements OnDataSendToActiv
                 startActivity(Intent.createChooser(browserIntent, "Chose browser"));
             }
         });
+    }
+
+    private void showLoader() {
+        mProgressDialog.setTitle("Loading");
+        mProgressDialog.setMessage("Please wait while we scrape the net");
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.show();
     }
 }
