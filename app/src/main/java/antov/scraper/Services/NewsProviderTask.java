@@ -14,19 +14,23 @@ import antov.scraper.Models.NewsDataObject;
 import antov.scraper.OnDataSendToActivity;
 
 public class NewsProviderTask extends AsyncTask<String, Void, ArrayList<NewsDataObject>> {
+    private HttpConstants mHttpConstants;
+    private HttpProvider mHttpProvider;
     private OnDataSendToActivity mDataSendToActivity;
 
+
     public NewsProviderTask(Activity activity) {
+        mHttpConstants = new HttpConstants();
+        mHttpProvider = new HttpProvider();
         mDataSendToActivity = (OnDataSendToActivity)activity;
     }
 
     @Override
-    protected ArrayList<NewsDataObject> doInBackground(String... url) {
-        HttpProvider mHttpProvider = new HttpProvider();
+    protected ArrayList<NewsDataObject> doInBackground(String... urlRoute) {
         ArrayList<NewsDataObject> results = new ArrayList<NewsDataObject>();
         String newsResponse = null;
         try {
-            newsResponse = mHttpProvider.performGetRequest(url[0]);
+            newsResponse = mHttpProvider.performGetRequest(mHttpConstants.mRestAppUrl + urlRoute[0]);
             JSONArray JsonNewsResults = new JSONArray(newsResponse);
             for (int i = 0; i < JsonNewsResults.length(); i++) {
                 JSONObject jsonObject = JsonNewsResults.getJSONObject(i);

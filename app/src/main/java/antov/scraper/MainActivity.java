@@ -16,12 +16,11 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import antov.scraper.Models.NewsDataObject;
+import antov.scraper.Services.HttpConstants;
 import antov.scraper.Services.NewsProviderTask;
 
 public class MainActivity extends AppCompatActivity implements OnDataSendToActivity {
-    private final String mRestAppUrl = "https://scraper-api.herokuapp.com/";
-    private final String mRestAppNewsSuffix = "news";
-    private final String mRestAppWeatherSuffix = "weather";
+    private HttpConstants mHttpConstants;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -30,11 +29,12 @@ public class MainActivity extends AppCompatActivity implements OnDataSendToActiv
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+        setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        mHttpConstants = new HttpConstants();
         mRecyclerView = (RecyclerView) findViewById(R.id.news_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity implements OnDataSendToActiv
         mAdapter = new RecyclerViewAdapter(new ArrayList<NewsDataObject>());
         mRecyclerView.setAdapter(mAdapter);
         mProgressDialog = new ProgressDialog(this);
-        showLoader();
 
-        new NewsProviderTask(this).execute(mRestAppUrl + mRestAppNewsSuffix);
+        showLoader();
+        new NewsProviderTask(this).execute(mHttpConstants.mRestAppNewsSuffix);
     }
 
     @Override
@@ -71,10 +71,10 @@ public class MainActivity extends AppCompatActivity implements OnDataSendToActiv
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_news) {
-            new NewsProviderTask(this).execute(mRestAppUrl + mRestAppNewsSuffix);
+            new NewsProviderTask(this).execute(mHttpConstants.mRestAppNewsSuffix);
             showLoader();
         } else if (id == R.id.action_weather) {
-            new NewsProviderTask(this).execute(mRestAppUrl + mRestAppWeatherSuffix);
+            new NewsProviderTask(this).execute(mHttpConstants.mRestAppWeatherSuffix);
             showLoader();
         }
         return super.onOptionsItemSelected(item);
