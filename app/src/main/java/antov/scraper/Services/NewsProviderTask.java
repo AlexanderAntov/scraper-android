@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.net.URL;
@@ -18,7 +17,6 @@ public class NewsProviderTask extends AsyncTask<String, Void, ArrayList<NewsData
     private HttpProvider mHttpProvider;
     private OnDataSendToActivity mDataSendToActivity;
 
-
     public NewsProviderTask(Activity activity) {
         mHttpConstants = new HttpConstants();
         mHttpProvider = new HttpProvider();
@@ -29,6 +27,7 @@ public class NewsProviderTask extends AsyncTask<String, Void, ArrayList<NewsData
     protected ArrayList<NewsDataObject> doInBackground(String... urlRoute) {
         ArrayList<NewsDataObject> results = new ArrayList<NewsDataObject>();
         String newsResponse = null;
+
         try {
             newsResponse = mHttpProvider.performGetRequest(mHttpConstants.mRestAppUrl + urlRoute[0]);
             JSONArray JsonNewsResults = new JSONArray(newsResponse);

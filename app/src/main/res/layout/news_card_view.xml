@@ -45,7 +45,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/news_image"
-                android:layout_below="@+id/headline"/>
+                android:layout_below="@+id/headline"
+                android:maxLines="5"
+                android:ellipsize="end" />
 
             <TextView
                 android:id="@+id/dateTime"
