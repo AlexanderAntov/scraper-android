@@ -1,7 +1,10 @@
 package antov.scraper;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +15,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -43,13 +48,23 @@ public class MainActivity extends AppCompatActivity implements OnDataSendToActiv
         mRecyclerView.setAdapter(mAdapter);
         mProgressDialog = new ProgressDialog(this);
 
-        showLoader();
-        new NewsProviderTask(this).execute(mHttpConstants.mRestAppNewsSuffix);
+        if (isNetworkAvailable()) {
+            showLoader();
+            new NewsProviderTask(this).execute(mHttpConstants.mRestAppNewsSuffix);
+        } else {
+            ImageView networkErrorImage = (ImageView)findViewById(R.id.network_error_image);
+            networkErrorImage.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void sendData(ArrayList<NewsDataObject> list) {
         try {
+            if (list.isEmpty()) {
+                ImageView noNewDataImage = (ImageView)findViewById(R.id.no_new_data_image);
+                noNewDataImage.setVisibility(View.VISIBLE);
+            }
+
             mAdapter = new RecyclerViewAdapter(list);
             mRecyclerView.setAdapter(mAdapter);
             mProgressDialog.dismiss();
@@ -58,6 +73,9 @@ public class MainActivity extends AppCompatActivity implements OnDataSendToActiv
             e.printStackTrace(new PrintWriter(sw));
             String exceptionAsString = sw.toString();
             Log.i("Error!", exceptionAsString);
+
+            ImageView networkErrorImage = (ImageView)findViewById(R.id.network_error_image);
+            networkErrorImage.setVisibility(View.VISIBLE);
         }
     }
 
@@ -99,5 +117,12 @@ public class MainActivity extends AppCompatActivity implements OnDataSendToActiv
         mProgressDialog.setMessage("Please wait while we scrape the net");
         mProgressDialog.setCancelable(false);
         mProgressDialog.show();
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = connectivityManager.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 }

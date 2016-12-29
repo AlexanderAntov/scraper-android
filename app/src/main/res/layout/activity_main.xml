@@ -36,4 +36,17 @@
             android:scrollbars="vertical"/>
     </RelativeLayout>
 
+    <ImageView
+        android:id="@+id/network_error_image"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@drawable/network_error"
+        android:visibility="gone"/>
+    <ImageView
+        android:id="@+id/no_new_data_image"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@drawable/no_new_data"
+        android:visibility="gone"/>
+
 </android.support.design.widget.CoordinatorLayout>
