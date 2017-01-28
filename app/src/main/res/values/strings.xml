@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">Scraper</string>
-    <string name="action_news">News</string>
+    <string name="action_all_news">All news</string>
     <string name="action_weather">Weather</string>
-    <string name="action_misc">Misc</string>
+    <string name="action_bbc">BBC</string>
+    <string name="action_cnn">CNN</string>
+    <string name="action_google">Google</string>
+    <string name="action_nyt">NYT</string>
+    <string name="action_guardian">The Guardian</string>
     <string name="action_reset">Reset</string>
 </resources>

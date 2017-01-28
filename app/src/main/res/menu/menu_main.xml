@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="antov.scraper.MainActivity">
     <item
-        android:id="@+id/action_news"
+        android:id="@+id/action_all_news"
         android:orderInCategory="100"
-        android:title="@string/action_news"
+        android:title="@string/action_all_news"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_weather"
@@ -13,13 +13,33 @@
         android:title="@string/action_weather"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_misc"
+        android:id="@+id/action_bbc"
         android:orderInCategory="102"
-        android:title="@string/action_misc"
+        android:title="@string/action_bbc"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_cnn"
+        android:orderInCategory="103"
+        android:title="@string/action_cnn"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_google"
+        android:orderInCategory="104"
+        android:title="@string/action_google"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_nyt"
+        android:orderInCategory="105"
+        android:title="@string/action_nyt"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_guardian"
+        android:orderInCategory="106"
+        android:title="@string/action_guardian"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_reset"
-        android:orderInCategory="103"
+        android:orderInCategory="107"
         android:title="@string/action_reset"
         app:showAsAction="never" />
 </menu>

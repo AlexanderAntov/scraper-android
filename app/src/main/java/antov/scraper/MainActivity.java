@@ -88,12 +88,31 @@ public class MainActivity extends AppCompatActivity implements OnDataSendToActiv
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_news) {
-            new NewsProviderTask(this).execute(mHttpConstants.mRestAppNewsSuffix);
-            showLoader();
-        } else if (id == R.id.action_weather) {
-            new NewsProviderTask(this).execute(mHttpConstants.mRestAppWeatherSuffix);
-            showLoader();
+        switch(id) {
+            case R.id.action_all_news:
+                requestData(mHttpConstants.mRestAppNewsSuffix);
+                break;
+            case R.id.action_weather:
+                requestData(mHttpConstants.mRestAppWeatherSuffix);
+                break;
+            case R.id.action_bbc:
+                requestData(mHttpConstants.mRestAppBBCNewsSuffix);
+                break;
+            case R.id.action_cnn:
+                requestData(mHttpConstants.mRestAppCNNNewsSuffix);
+                break;
+            case R.id.action_google:
+                requestData(mHttpConstants.mRestAppGoogleNewsSuffix);
+                break;
+            case R.id.action_nyt:
+                requestData(mHttpConstants.mRestAppNYTNewsSuffix);
+                break;
+            case R.id.action_guardian:
+                requestData(mHttpConstants.mRestAppTheGuardianNewsSuffix);
+                break;
+            case R.id.action_reset:
+                //TODO
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -110,6 +129,11 @@ public class MainActivity extends AppCompatActivity implements OnDataSendToActiv
                 startActivity(Intent.createChooser(browserIntent, "Chose browser"));
             }
         });
+    }
+
+    private void requestData(String url) {
+        new NewsProviderTask(this).execute(url);
+        showLoader();
     }
 
     private void showLoader() {
