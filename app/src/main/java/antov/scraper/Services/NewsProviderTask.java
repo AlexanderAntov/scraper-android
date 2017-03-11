@@ -40,7 +40,7 @@ public class NewsProviderTask extends AsyncTask<String, Void, ArrayList<NewsData
                 }
                 NewsDataObject obj = new NewsDataObject(
                         jsonObject.getString("title"),
-                        jsonObject.getString("shortInfo"),
+                        jsonObject.getString("info"),
                         jsonObject.getString("url"),
                         newsItemImage,
                         jsonObject.getString("dateTime")
