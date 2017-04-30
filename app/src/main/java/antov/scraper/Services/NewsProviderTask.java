@@ -29,7 +29,7 @@ public class NewsProviderTask extends AsyncTask<String, Void, ArrayList<NewsData
         String newsResponse = null;
 
         try {
-            newsResponse = mHttpProvider.performGetRequest(mHttpConstants.mRestAppUrl + urlRoute[0]);
+            newsResponse = mHttpProvider.performGetRequest(mHttpConstants.mBaseUrl + urlRoute[0]);
             JSONArray JsonNewsResults = new JSONArray(newsResponse);
             for (int i = 0; i < JsonNewsResults.length(); i++) {
                 JSONObject jsonObject = JsonNewsResults.getJSONObject(i);

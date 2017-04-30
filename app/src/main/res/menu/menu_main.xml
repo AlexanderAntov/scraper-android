@@ -38,8 +38,8 @@
         android:title="@string/action_guardian"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_reset"
+        android:id="@+id/tech_and_science"
         android:orderInCategory="107"
-        android:title="@string/action_reset"
+        android:title="@string/action_tech_and_science"
         app:showAsAction="never" />
 </menu>

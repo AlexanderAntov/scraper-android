@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements OnDataSendToActiv
 
         if (isNetworkAvailable()) {
             showLoader();
-            new NewsProviderTask(this).execute(mHttpConstants.mRestAppNewsSuffix);
+            new NewsProviderTask(this).execute(mHttpConstants.mNewsSuffix);
         } else {
             ImageView networkErrorImage = (ImageView)findViewById(R.id.network_error_image);
             networkErrorImage.setVisibility(View.VISIBLE);
@@ -90,28 +90,28 @@ public class MainActivity extends AppCompatActivity implements OnDataSendToActiv
         int id = item.getItemId();
         switch(id) {
             case R.id.action_all_news:
-                requestData(mHttpConstants.mRestAppNewsSuffix);
+                requestData(mHttpConstants.mNewsSuffix);
                 break;
             case R.id.action_weather:
-                requestData(mHttpConstants.mRestAppWeatherSuffix);
+                requestData(mHttpConstants.mWeather);
                 break;
             case R.id.action_bbc:
-                requestData(mHttpConstants.mRestAppBBCNewsSuffix);
+                requestData(mHttpConstants.mBBCNews);
                 break;
             case R.id.action_cnn:
-                requestData(mHttpConstants.mRestAppCNNNewsSuffix);
+                requestData(mHttpConstants.mCNNNews);
                 break;
             case R.id.action_google:
-                requestData(mHttpConstants.mRestAppGoogleNewsSuffix);
+                requestData(mHttpConstants.mGoogleNews);
                 break;
             case R.id.action_nyt:
-                requestData(mHttpConstants.mRestAppNYTNewsSuffix);
+                requestData(mHttpConstants.mNYTNews);
                 break;
             case R.id.action_guardian:
-                requestData(mHttpConstants.mRestAppTheGuardianNewsSuffix);
+                requestData(mHttpConstants.mTheGuardianNews);
                 break;
-            case R.id.action_reset:
-                //TODO
+            case R.id.tech_and_science:
+                requestData(mHttpConstants.mTechAndScience);
                 break;
         }
         return super.onOptionsItemSelected(item);
