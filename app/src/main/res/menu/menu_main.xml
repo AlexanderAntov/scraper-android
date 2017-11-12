@@ -33,9 +33,9 @@
         android:title="@string/action_nyt"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_guardian"
+        android:id="@+id/action_reuters"
         android:orderInCategory="106"
-        android:title="@string/action_guardian"
+        android:title="@string/action_reuters"
         app:showAsAction="never" />
     <item
         android:id="@+id/tech_and_science"

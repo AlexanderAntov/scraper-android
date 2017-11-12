@@ -107,8 +107,8 @@ public class MainActivity extends AppCompatActivity implements OnDataSendToActiv
             case R.id.action_nyt:
                 requestData(mHttpConstants.mNYTNews);
                 break;
-            case R.id.action_guardian:
-                requestData(mHttpConstants.mTheGuardianNews);
+            case R.id.action_reuters:
+                requestData(mHttpConstants.mReutersNews);
                 break;
             case R.id.tech_and_science:
                 requestData(mHttpConstants.mTechAndScience);
