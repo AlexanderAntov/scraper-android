@@ -42,4 +42,9 @@
         android:orderInCategory="107"
         android:title="@string/action_tech_and_science"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/programming"
+        android:orderInCategory="108"
+        android:title="@string/action_programming"
+        app:showAsAction="never" />
 </menu>

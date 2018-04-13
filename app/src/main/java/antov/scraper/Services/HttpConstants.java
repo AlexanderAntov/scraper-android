@@ -10,4 +10,5 @@ public class HttpConstants {
     public final String mReutersNews = mNewsSuffix + "/reuters";
     public final String mWeather = "weather";
     public final String mTechAndScience = "tech-and-science";
+    public final String mProgramming = "programming";
 }

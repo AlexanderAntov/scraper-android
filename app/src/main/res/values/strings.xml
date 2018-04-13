@@ -8,4 +8,5 @@
     <string name="action_nyt">NYT</string>
     <string name="action_reuters">Reuters</string>
     <string name="action_tech_and_science">Tech and science</string>
+    <string name="action_programming">Programming</string>
 </resources>

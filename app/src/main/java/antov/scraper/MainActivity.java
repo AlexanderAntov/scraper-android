@@ -113,6 +113,9 @@ public class MainActivity extends AppCompatActivity implements OnDataSendToActiv
             case R.id.tech_and_science:
                 requestData(mHttpConstants.mTechAndScience);
                 break;
+            case R.id.programming:
+                requestData(mHttpConstants.mProgramming);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
