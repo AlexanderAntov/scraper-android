@@ -1,0 +1,2 @@
+Scraper Android is a native vanilla Java application that renders the data provided by [Scraper API](https://github.com/AlexanderAntov/scraper-js).
+It provides a generic list view that visualizes the different news pieces provided by the API. For the custom views such as the different charts, still the web appllication is used.
